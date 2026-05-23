@@ -1,65 +1,167 @@
-body {
-  font-family: Arial, sans-serif;
-  background: #f2f2f2;
-  display: flex;
-  justify-content: center;
-  margin-top: 50px;
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap');
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
 }
 
-.container {
-  background: white;
-  padding: 20px;
-  width: 300px;
-  border-radius: 10px;
-  box-shadow: 0 0 10px rgba(0,0,0,0.1);
+body{
+    min-height: 100vh;
+    background: linear-gradient(135deg, #2b1d16, #4d3427, #24140f);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    position: relative;
 }
 
-h2 {
-  text-align: center;
+/* soft glowing background */
+body::before,
+body::after{
+    content: "";
+    position: absolute;
+    width: 320px;
+    height: 320px;
+    border-radius: 50%;
+    background: rgba(255, 220, 170, 0.08);
+    filter: blur(90px);
 }
 
-.input-box {
-  display: flex;
-  gap: 10px;
+body::before{
+    top: -100px;
+    left: -100px;
 }
 
-input {
-  flex: 1;
-  padding: 10px;
+body::after{
+    bottom: -100px;
+    right: -100px;
 }
 
-button {
-  padding: 10px;
-  cursor: pointer;
-  border: none;
-  background: #4CAF50;
-  color: white;
-  border-radius: 5px;
+.container{
+    width: 100%;
+    padding: 20px;
+    display: flex;
+    justify-content: center;
 }
 
-ul {
-  list-style: none;
-  padding: 0;
-  margin-top: 20px;
+.todo-app{
+    width: 100%;
+    max-width: 500px;
+    background: rgba(255, 248, 238, 0.95);
+    padding: 35px 30px;
+    border-radius: 24px;
+    box-shadow: 0 12px 35px rgba(0,0,0,0.35);
+    border: 2px solid rgba(120, 80, 40, 0.15);
+    backdrop-filter: blur(6px);
 }
 
-li {
-  background: #eee;
-  padding: 10px;
-  margin-bottom: 10px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  border-radius: 5px;
+.todo-app h1{
+    color: #5a3927;
+    font-size: 34px;
+    margin-bottom: 25px;
+    text-align: center;
+    letter-spacing: 1px;
+    font-weight: 600;
 }
 
-.delete {
-  background: red;
-  padding: 5px 8px;
-  border-radius: 4px;
+.row{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: #f2dfca;
+    border-radius: 40px;
+    padding-left: 20px;
+    margin-bottom: 30px;
+    border: 2px solid #d7b08b;
 }
 
-.completed {
-  text-decoration: line-through;
-  color: gray;
+input{
+    flex: 1;
+    border: none;
+    outline: none;
+    background: transparent;
+    padding: 15px;
+    font-size: 16px;
+    color: #5a3927;
+}
+
+input::placeholder{
+    color: #98745a;
+}
+
+button{
+    border: none;
+    outline: none;
+    padding: 16px 35px;
+    background: linear-gradient(135deg, #8b5a3c, #c0895c);
+    color: #fff8f0;
+    font-size: 16px;
+    cursor: pointer;
+    border-radius: 40px;
+    transition: 0.3s;
+    font-weight: 500;
+}
+
+button:hover{
+    transform: scale(1.05);
+}
+
+ul li{
+    list-style: none;
+    font-size: 17px;
+    padding: 14px 8px 14px 55px;
+    user-select: none;
+    cursor: pointer;
+    position: relative;
+    color: #4b2e1d;
+    margin-bottom: 10px;
+    transition: 0.3s;
+}
+
+ul li:hover{
+    transform: translateX(5px);
+}
+
+ul li::before{
+    content: "";
+    position: absolute;
+    height: 24px;
+    width: 24px;
+    border-radius: 50%;
+    background-image: url('https://cdn-icons-png.flaticon.com/128/1828/1828919.png');
+    background-size: cover;
+    background-position: center;
+    top: 12px;
+    left: 8px;
+    opacity: 0.4;
+}
+
+ul li.checked{
+    color: #9b7b62;
+    text-decoration: line-through;
+}
+
+ul li.checked::before{
+    background-image: url('https://cdn-icons-png.flaticon.com/128/5610/5610944.png');
+    opacity: 1;
+}
+
+ul li span{
+    position: absolute;
+    right: 0;
+    top: 5px;
+    width: 35px;
+    height: 35px;
+    font-size: 22px;
+    color: #7b5539;
+    line-height: 35px;
+    text-align: center;
+    border-radius: 50%;
+    transition: 0.3s;
+}
+
+ul li span:hover{
+    background: #ead2b7;
 }
