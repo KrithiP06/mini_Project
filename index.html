@@ -1,32 +1,91 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Vintage To-Do List</title>
-  <link rel="stylesheet" href="style.css" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Modern To-Do App</title>
+
+    <link rel="stylesheet" href="style.css">
+
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 </head>
+
 <body>
 
-  <div class="container">
+    <div class="app">
 
-    <div class="todo-app">
+        <!-- HEADER -->
 
-      <h1>To-Do List ✨</h1>
+        <div class="header">
 
-      <div class="row">
-        <input type="text" id="input-box" placeholder="Write your task here...">
-        <button onclick="addTask()">Add</button>
-      </div>
+            <div>
+                <h2>Hello, Krithi 👋</h2>
+                <p>You have work today</p>
+            </div>
 
-      <ul id="list-container">
-        <!-- Tasks will appear here -->
-      </ul>
+            <i class="fa-regular fa-bell"></i>
+
+        </div>
+
+        <!-- DASHBOARD -->
+
+        <div class="cards">
+
+            <div class="card blue">
+                <p>Today</p>
+                <h2 id="today-count">0</h2>
+            </div>
+
+            <div class="card yellow">
+                <p>Completed</p>
+                <h2 id="completed-count">0</h2>
+            </div>
+
+            <div class="card green">
+                <p>All Tasks</p>
+                <h2 id="all-count">0</h2>
+            </div>
+
+            <div class="card pink">
+                <p>Pending</p>
+                <h2 id="pending-count">0</h2>
+            </div>
+
+        </div>
+
+        <!-- INPUT SECTION -->
+
+        <div class="input-section">
+
+            <input type="text" id="task-input" placeholder="Add a task">
+
+            <select id="category">
+                <option>Personal</option>
+                <option>Work</option>
+                <option>Study</option>
+                <option>Shopping</option>
+            </select>
+
+            <input type="time" id="task-time">
+
+        </div>
+
+        <!-- TASK LIST -->
+
+        <ul id="task-list"></ul>
+
+        <!-- FLOATING BUTTON -->
+
+        <button class="floating-btn" onclick="addTask()">
+            <i class="fa-solid fa-plus"></i>
+        </button>
 
     </div>
 
-  </div>
+    <script src="script.js"></script>
 
-  <script src="script.js"></script>
 </body>
+
 </html>
