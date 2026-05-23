@@ -1,28 +1,46 @@
+const inputBox = document.getElementById("input-box");
+const listContainer = document.getElementById("list-container");
+
 function addTask() {
-  let input = document.getElementById("taskInput");
-  let taskText = input.value;
 
-  if (taskText === "") {
-    alert("Please enter a task");
-    return;
-  }
+    if(inputBox.value === ''){
+        alert("Please enter a task!");
+    }
+    else{
+        let li = document.createElement("li");
+        li.innerHTML = inputBox.value;
+        listContainer.appendChild(li);
 
-  let li = document.createElement("li");
+        let span = document.createElement("span");
+        span.innerHTML = "\u00d7";
+        li.appendChild(span);
+    }
 
-  li.innerHTML = `
-    <span onclick="toggleTask(this)">${taskText}</span>
-    <button class="delete" onclick="deleteTask(this)">X</button>
-  `;
-
-  document.getElementById("taskList").appendChild(li);
-
-  input.value = "";
+    inputBox.value = "";
+    saveData();
 }
 
-function deleteTask(button) {
-  button.parentElement.remove();
+listContainer.addEventListener("click", function(e){
+
+    if(e.target.tagName === "LI"){
+        e.target.classList.toggle("checked");
+        saveData();
+    }
+
+    else if(e.target.tagName === "SPAN"){
+        e.target.parentElement.remove();
+        saveData();
+    }
+
+}, false);
+
+
+function saveData(){
+    localStorage.setItem("data", listContainer.innerHTML);
 }
 
-function toggleTask(task) {
-  task.classList.toggle("completed");
+function showTask(){
+    listContainer.innerHTML = localStorage.getItem("data");
 }
+
+showTask();
