@@ -1,24 +1,24 @@
-const addBtn = document.getElementById("addBtn");
+function addTask() {
+    let taskInput = document.getElementById("taskInput");
+    let taskText = taskInput.value;
 
-const taskInput = document.getElementById("taskInput");
-
-const taskList = document.getElementById("taskList");
-
-addBtn.addEventListener("click", function () {
-
-    const task = taskInput.value;
-
-    if (task === "") {
-        alert("Enter a task");
+    if (taskText === "") {
+        alert("Please enter a task");
         return;
     }
 
-    const li = document.createElement("li");
+    let li = document.createElement("li");
 
-    li.innerText = task;
+    li.innerHTML = `
+        ${taskText}
+        <button class="delete-btn" onclick="deleteTask(this)">Delete</button>
+    `;
 
-    taskList.appendChild(li);
+    document.getElementById("taskList").appendChild(li);
 
     taskInput.value = "";
+}
 
-});
+function deleteTask(button) {
+    button.parentElement.remove();
+}
