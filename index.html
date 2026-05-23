@@ -1,74 +1,114 @@
+<!-- index.html -->
+
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Modern To-Do App</title>
+
+    <title>Advanced To-Do App</title>
 
     <link rel="stylesheet" href="style.css">
 
     <link rel="stylesheet"
-        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 </head>
 
 <body>
 
     <div class="app">
 
-        <!-- HEADER -->
-
-        <div class="header">
+        <div class="top-bar">
 
             <div>
-                <h2>Hello, Krithi 👋</h2>
-                <p>You have work today</p>
+                <h1>TaskFlow ✨</h1>
+                <p>Stay productive everyday</p>
             </div>
 
-            <i class="fa-regular fa-bell"></i>
+            <button id="theme-btn">
+                <i class="fa-solid fa-moon"></i>
+            </button>
 
         </div>
 
         <!-- DASHBOARD -->
 
-        <div class="cards">
+        <div class="dashboard">
 
             <div class="card blue">
-                <p>Today</p>
-                <h2 id="today-count">0</h2>
-            </div>
-
-            <div class="card yellow">
-                <p>Completed</p>
-                <h2 id="completed-count">0</h2>
+                <h3 id="all-count">0</h3>
+                <p>All Tasks</p>
             </div>
 
             <div class="card green">
-                <p>All Tasks</p>
-                <h2 id="all-count">0</h2>
+                <h3 id="completed-count">0</h3>
+                <p>Completed</p>
             </div>
 
             <div class="card pink">
+                <h3 id="pending-count">0</h3>
                 <p>Pending</p>
-                <h2 id="pending-count">0</h2>
+            </div>
+
+            <div class="card yellow">
+                <h3 id="progress">0%</h3>
+                <p>Progress</p>
             </div>
 
         </div>
 
-        <!-- INPUT SECTION -->
+        <!-- TASK FORM -->
 
-        <div class="input-section">
+        <div class="task-form">
 
-            <input type="text" id="task-input" placeholder="Add a task">
+            <input type="text" id="task-input" placeholder="Add your task...">
 
-            <select id="category">
-                <option>Personal</option>
-                <option>Work</option>
-                <option>Study</option>
-                <option>Shopping</option>
-            </select>
+            <div class="task-options">
 
-            <input type="time" id="task-time">
+                <select id="category">
+                    <option>Personal</option>
+                    <option>Work</option>
+                    <option>Study</option>
+                    <option>Shopping</option>
+                </select>
+
+                <input type="date" id="task-date">
+
+                <input type="time" id="task-time">
+
+            </div>
+
+            <button id="add-btn" onclick="addTask()">
+                <i class="fa-solid fa-plus"></i> Add Task
+            </button>
+
+        </div>
+
+        <!-- FILTERS -->
+
+        <div class="filters">
+
+            <button class="filter-btn active" data-filter="all">
+                All
+            </button>
+
+            <button class="filter-btn" data-filter="completed">
+                Completed
+            </button>
+
+            <button class="filter-btn" data-filter="pending">
+                Pending
+            </button>
+
+        </div>
+
+        <!-- SEARCH -->
+
+        <div class="search-box">
+
+            <i class="fa-solid fa-magnifying-glass"></i>
+
+            <input type="text" id="search-input" placeholder="Search tasks...">
 
         </div>
 
@@ -76,16 +116,9 @@
 
         <ul id="task-list"></ul>
 
-        <!-- FLOATING BUTTON -->
-
-        <button class="floating-btn" onclick="addTask()">
-            <i class="fa-solid fa-plus"></i>
-        </button>
-
     </div>
 
     <script src="script.js"></script>
 
 </body>
-
 </html>
