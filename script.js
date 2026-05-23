@@ -1,46 +1,121 @@
-const inputBox = document.getElementById("input-box");
-const listContainer = document.getElementById("list-container");
+const taskInput = document.getElementById("task-input");
 
-function addTask() {
+const category = document.getElementById("category");
 
-    if(inputBox.value === ''){
-        alert("Please enter a task!");
+const taskTime = document.getElementById("task-time");
+
+const taskList = document.getElementById("task-list");
+
+function addTask(){
+
+    if(taskInput.value === ""){
+
+        alert("Please enter a task");
+
+        return;
     }
-    else{
-        let li = document.createElement("li");
-        li.innerHTML = inputBox.value;
-        listContainer.appendChild(li);
 
-        let span = document.createElement("span");
-        span.innerHTML = "\u00d7";
-        li.appendChild(span);
-    }
+    let li = document.createElement("li");
 
-    inputBox.value = "";
+    li.innerHTML = `
+
+        <div class="task-top">
+
+            <div class="task-name">
+                ${taskInput.value}
+            </div>
+
+            <i class="fa-solid fa-ellipsis"></i>
+
+        </div>
+
+        <div class="task-info">
+            Today • ${taskTime.value || "No Time"}
+        </div>
+
+        <div class="task-category">
+            ${category.value}
+        </div>
+
+        <div class="actions">
+
+            <button class="complete-btn">
+                Complete
+            </button>
+
+            <button class="delete-btn">
+                Delete
+            </button>
+
+        </div>
+
+    `;
+
+    taskList.appendChild(li);
+
+    taskInput.value = "";
+
+    updateCounts();
+
     saveData();
 }
 
-listContainer.addEventListener("click", function(e){
+/* COMPLETE + DELETE */
 
-    if(e.target.tagName === "LI"){
-        e.target.classList.toggle("checked");
+taskList.addEventListener("click", function(e){
+
+    if(e.target.classList.contains("complete-btn")){
+
+        e.target.parentElement.parentElement.classList.toggle("checked");
+
+        updateCounts();
+
         saveData();
     }
 
-    else if(e.target.tagName === "SPAN"){
-        e.target.parentElement.remove();
+    if(e.target.classList.contains("delete-btn")){
+
+        e.target.parentElement.parentElement.remove();
+
+        updateCounts();
+
         saveData();
     }
 
-}, false);
+});
 
+/* COUNTS */
+
+function updateCounts(){
+
+    const allTasks = document.querySelectorAll("#task-list li").length;
+
+    const completedTasks = document.querySelectorAll(".checked").length;
+
+    document.getElementById("all-count").innerHTML = allTasks;
+
+    document.getElementById("completed-count").innerHTML = completedTasks;
+
+    document.getElementById("pending-count").innerHTML =
+        allTasks - completedTasks;
+
+    document.getElementById("today-count").innerHTML = allTasks;
+}
+
+/* SAVE */
 
 function saveData(){
-    localStorage.setItem("data", listContainer.innerHTML);
+
+    localStorage.setItem("tasks", taskList.innerHTML);
 }
 
-function showTask(){
-    listContainer.innerHTML = localStorage.getItem("data");
+/* SHOW */
+
+function showTasks(){
+
+    taskList.innerHTML = localStorage.getItem("tasks");
+
+    updateCounts();
 }
 
-showTask();
+showTasks();
