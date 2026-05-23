@@ -1,124 +1,36 @@
-<!-- index.html -->
-
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <title>Advanced To-Do App</title>
+    <title>Aesthetic To-Do List</title>
 
     <link rel="stylesheet" href="style.css">
 
-    <link rel="stylesheet"
-    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap"
+        rel="stylesheet">
 </head>
 
 <body>
 
-    <div class="app">
+    <div class="container">
+        <h1 class="title">✨ To-Do List ✨</h1>
 
-        <div class="top-bar">
-
-            <div>
-                <h1>TaskFlow ✨</h1>
-                <p>Stay productive everyday</p>
-            </div>
-
-            <button id="theme-btn">
-                <i class="fa-solid fa-moon"></i>
-            </button>
-
+        <div class="input-box">
+            <input type="text" id="taskInput" placeholder="Add a new task...">
+            <button onclick="addTask()">Add</button>
         </div>
 
-        <!-- DASHBOARD -->
+        <ul id="taskList"></ul>
 
-        <div class="dashboard">
-
-            <div class="card blue">
-                <h3 id="all-count">0</h3>
-                <p>All Tasks</p>
-            </div>
-
-            <div class="card green">
-                <h3 id="completed-count">0</h3>
-                <p>Completed</p>
-            </div>
-
-            <div class="card pink">
-                <h3 id="pending-count">0</h3>
-                <p>Pending</p>
-            </div>
-
-            <div class="card yellow">
-                <h3 id="progress">0%</h3>
-                <p>Progress</p>
-            </div>
-
+        <div class="footer">
+            Stay productive 💖
         </div>
-
-        <!-- TASK FORM -->
-
-        <div class="task-form">
-
-            <input type="text" id="task-input" placeholder="Add your task...">
-
-            <div class="task-options">
-
-                <select id="category">
-                    <option>Personal</option>
-                    <option>Work</option>
-                    <option>Study</option>
-                    <option>Shopping</option>
-                </select>
-
-                <input type="date" id="task-date">
-
-                <input type="time" id="task-time">
-
-            </div>
-
-            <button id="add-btn" onclick="addTask()">
-                <i class="fa-solid fa-plus"></i> Add Task
-            </button>
-
-        </div>
-
-        <!-- FILTERS -->
-
-        <div class="filters">
-
-            <button class="filter-btn active" data-filter="all">
-                All
-            </button>
-
-            <button class="filter-btn" data-filter="completed">
-                Completed
-            </button>
-
-            <button class="filter-btn" data-filter="pending">
-                Pending
-            </button>
-
-        </div>
-
-        <!-- SEARCH -->
-
-        <div class="search-box">
-
-            <i class="fa-solid fa-magnifying-glass"></i>
-
-            <input type="text" id="search-input" placeholder="Search tasks...">
-
-        </div>
-
-        <!-- TASK LIST -->
-
-        <ul id="task-list"></ul>
-
     </div>
 
     <script src="script.js"></script>
 
 </body>
+
 </html>
